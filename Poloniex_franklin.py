@@ -18,8 +18,7 @@ def get_data(list_of_currencies, start, end, freq):
     import warnings
     warnings.filterwarnings("ignore")
     from IPython.display import clear_output
-    from progressbar import ProgressBar
-    pbar = ProgressBar()
+    
     
     freq = str(freq)
     since = int(time.mktime(datetime.datetime.strptime(start, "%Y-%m-%d").timetuple()))
@@ -27,7 +26,7 @@ def get_data(list_of_currencies, start, end, freq):
      
   
     
-    for name in pbar(list_of_currencies):
+    for name in list_of_currencies:
         name1=name.split('/')
         name1.reverse()
         name=str(name1[0]+'_'+name1[1])
@@ -78,7 +77,7 @@ def call_data(list_of_curr_downloaded):
         name1.reverse()
         name=str(name1[0]+'_'+name1[1])
 
-        df1 = pd.read_csv('..\\Verao_2018\\{}.csv'.format(name))
+        df1 = pd.read_csv('{}.csv'.format(name))
         dataf = pd.concat([df,df1])
         df=dataf
         
